@@ -1,0 +1,27 @@
+Coffee Shop Finder
+January 6, 2017
+
+What is Coffee Shop Finder
+
+C.S.F is an application that allows a user to enter in a zip code from where they want their search centered, and then lists all the surrounding coffee shops/cafes in descending order from closest to furthest within a selected radius.
+
+User Stories
+----------------------------------------------------------
+A user will enter in the center point of their search by entering their zip code.
+
+A user will select the radius of their search by selecting the distance in miles from a drop down menu.
+
+A user will be returned a list of coffee shops/cafes in order from closest to furthest from them.
+
+A user will also have access to rating/review information of the shop.
+
+A user will be able to leave a review of the shop or a star rating. (stretch goal)
+
+A user will be shown an image of the shop.
+
+A user will be given directions to the coffee shop of their choosing (stretch goal)
+
+API
+-----------------------------------------------------------
+Google maps API
+Review / Star rating API or allow users to put that in themselves.
