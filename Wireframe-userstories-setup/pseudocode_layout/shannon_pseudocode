@@ -1,0 +1,46 @@
+Approach by user story:
+
+User Stories
+----------------------------------------------------------
+A user will enter in the center point of their search by entering their zip code.
+==> a user will type
+
+A user will select the radius of their search by selecting the distance in miles from a drop down menu.
+
+A user will be returned a list of coffee shops/cafes in order from closest to furthest from them.
+
+A user will also have access to rating/review information of the shop.
+
+A user will be able to leave a review of the shop or a star rating. (stretch goal)
+
+A user will be shown an image of the shop.
+
+A user will be given directions to the coffee shop of their choosing (stretch goal)
+
+
+
+
+
+
+
+======================
+🔴 Mandatory to pass:
+
+MVP - minimum viable product
+
+A working full-stack application, built by you & your group members
+Use the MEAN stack : Mongo, Express, Angular, Node
+You app should consume an API (your own, a third party, or both)
+A git repository hosted on Github, with a link to your hosted project, and frequent commits dating back to the very beginning of the project. Commit early, commit often
+At least one Github commit per day
+A daily tracker that all group members use (Trello, github issues, or another similar tracker)
+Be deployed online and accessible to the public via Heroku
+Have a link to your hosted working app in the README.md file in your github repo
+Lastly, a technical demonstration of your app which:
+
+Is ~5-10 minutes in length
+All group members should speak during the presentation
+Shows off all features of the app
+Explains the technical details
+Explains the technical challenges
+Explains which improvements you might make
