@@ -3,7 +3,7 @@ Approach by user story:
 User Stories
 ----------------------------------------------------------
 A user will enter in the center point of their search by entering their zip code.
-==> a user will type
+==> a user will type into a SEARCH BAR 
 
 A user will select the radius of their search by selecting the distance in miles from a drop down menu.
 
@@ -16,9 +16,6 @@ A user will be able to leave a review of the shop or a star rating. (stretch goa
 A user will be shown an image of the shop.
 
 A user will be given directions to the coffee shop of their choosing (stretch goal)
-
-
-
 
 
 
