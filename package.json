@@ -1,0 +1,19 @@
+{
+  "name": "coffee-shop-finder",
+  "version": "1.0.0",
+  "description": "## User Stories:",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdanae89/Coffee-Shop-Finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdanae89/Coffee-Shop-Finder/issues"
+  },
+  "homepage": "https://github.com/kdanae89/Coffee-Shop-Finder#readme"
+}
