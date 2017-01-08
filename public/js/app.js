@@ -19,7 +19,7 @@
 
 //.then
 //     function(response)
-//        log response         (so for now this section will be guesswork until i can get into our API and find what data im getting back. how the response will be formatted.)
+//        log response         (so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
 
 
 
