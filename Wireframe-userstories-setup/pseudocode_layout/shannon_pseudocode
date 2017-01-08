@@ -2,20 +2,19 @@ Approach by user story:
 
 User Stories
 ----------------------------------------------------------
-A user will enter in the center point of their search by entering their zip code.
-==> a user will type into a SEARCH BAR 
+On entering the website: A user will enter in the center point of their search by entering their zip code.
 
-A user will select the radius of their search by selecting the distance in miles from a drop down menu.
-
-A user will be returned a list of coffee shops/cafes in order from closest to furthest from them.
+A user will be returned a list of coffee shops/cafes in order of distance.
 
 A user will also have access to rating/review information of the shop.
 
-A user will be able to leave a review of the shop or a star rating. (stretch goal)
+A user should be able to see the TRENDING coffee shops based on algorithm: now, weekly, all time (likes depreciate in value over time)
 
-A user will be shown an image of the shop.
+When a user clicks on a coffee shop they're interested in, the business profile card pops up
 
 A user will be given directions to the coffee shop of their choosing (stretch goal)
+
+A user will select the radius of their search by selecting the distance in miles from a drop down menu (stretch).
 
 
 
