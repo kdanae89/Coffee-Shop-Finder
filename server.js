@@ -13,12 +13,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // REQUIRE CONTROLLER
-var csfController = require('./controllers/coffeeShops.js');
+var findShops = require('./controllers/coffeeShops.js');
 
 // CONTROLLER MIDDLEWARE
   // app.use(
   //   route,
-  //   csfController
+  //   findShops
   // );
 
 //DB
