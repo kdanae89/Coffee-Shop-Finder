@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 // var locationSchema = mongoose.Schema({
 //
 // });
+var locationSchema = mongoose.Schema({
+	zip: Number
+})
 
 var Location = mongoose.model('Location', locationSchema);
 
