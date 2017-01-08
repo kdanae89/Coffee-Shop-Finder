@@ -1,4 +1,4 @@
-# [Coffee-Shop-Finder](https://matrix-coffee-shop-finder.herokuapp.com/)
+# [Coffee Shop Finder](https://matrix-coffee-shop-finder.herokuapp.com/)
 
 ## User Stories:
 
