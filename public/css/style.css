@@ -1,0 +1,70 @@
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+* {
+  font-family: 'Boogaloo', cursive;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+#search {
+  margin-left: 2%;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  padding-top: 2%;
+}
+
+label {
+  display: block;
+  margin-bottom: 2%;
+}
+
+input[type="text"] {
+  text-align: center;
+  font-size: 1rem;
+  background: linear-gradient(lavender,aqua);
+}
+
+input[type="submit"] {
+  border-radius: 100%;
+  background: linear-gradient(lavender,aqua);
+  border-color: black;
+}
+
+#trending {
+  position: absolute;
+  float: right;
+  display: block;
+  width: 45%;
+  margin-right: 2%;
+  top: 10%;
+  right: 0;
+}
+
+#trending h1{
+  font-variant: small-caps;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+#trending li {
+  margin: 1%;
+  width: 30%;
+  text-align: center;
+  margin-top: 0;
+  list-style: none;
+  display: block;
+  float: left;
+  border: 1px solid black;
+  padding: 1%;
+  background: linear-gradient(lavender,aqua);
+}
