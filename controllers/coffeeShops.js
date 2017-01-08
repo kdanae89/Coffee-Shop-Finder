@@ -1,4 +1,8 @@
-//declare dependencies
+//DEPENDENCIES
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 //get '/' and display initial information (the only initial info wed have that is stored locally is the radius for the drop down if we do that.)
 
