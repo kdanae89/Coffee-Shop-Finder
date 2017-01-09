@@ -2,7 +2,8 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Location = require('../models/location.js')
+var Location = require('../models/location.js');
+var googleapi = require('@google/maps');
 
 //get '/' and display initial information (the only initial info wed have that is stored locally is the radius for the drop down if we do that.)
 
