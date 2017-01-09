@@ -3,6 +3,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+});
 
 // PORT
 var port = process.env.PORT || 3000;
