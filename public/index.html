@@ -3,6 +3,9 @@
 <html ng-app="coffeeShopFinder">
   <head>
     <meta charset="utf-8">
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback=initMap">
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
@@ -21,7 +24,8 @@
         <input type="text" name="" placeholder="zipcode" value="">
         <input type="submit" value="">
       </form>
-      <img src="" alt="map?">
+      <div id="map">
+      </div>
     </div>
     <aside id="trending">
       <h1>trending</h1>
