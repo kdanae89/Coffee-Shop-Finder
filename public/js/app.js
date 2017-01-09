@@ -13,10 +13,14 @@ app.controller('locatedShops', ['$http', function($http){
   $http({
     method:'GET',
 <<<<<<< HEAD
+<<<<<<< HEAD
     // url:
 =======
     url:''
 >>>>>>> 4e760928bc460d53ba38bfb44831bb5e7e463f00
+=======
+    url:''
+>>>>>>> 7c9a87c36e862f42ea54870cea971cc8c7f1b056
   }).then(
       function(response) {
         //log to test
@@ -31,7 +35,10 @@ app.controller('locatedShops', ['$http', function($http){
 
 }]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c9a87c36e862f42ea54870cea971cc8c7f1b056
 
 //connect maps
 var initMap = function() {
@@ -79,5 +86,8 @@ var initMap = function() {
 
 
 //})
+<<<<<<< HEAD
 =======
 >>>>>>> 4e760928bc460d53ba38bfb44831bb5e7e463f00
+=======
+>>>>>>> 7c9a87c36e862f42ea54870cea971cc8c7f1b056
