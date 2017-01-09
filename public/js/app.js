@@ -41,6 +41,7 @@ var initMap = function() {
 
         var request = {
           location: center,
+          // (In meters, estimates roughly 5 miles)
           radius:8047,
           types: ['cafe']
         };
