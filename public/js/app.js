@@ -2,6 +2,8 @@
 //added angular declaration
 var app = angular.module('coffeeShopFinder', []);
 
+
+
 //create our controller, calling this one locatedShops
 app.controller('locatedShops', ['$http', function($http){
   //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
@@ -10,7 +12,7 @@ app.controller('locatedShops', ['$http', function($http){
   this.getShops = function(zipcode){
   $http({
     method:'GET',
-    url:
+    // url:
   }).then(
       function(response) {
         //log to test
@@ -23,6 +25,20 @@ app.controller('locatedShops', ['$http', function($http){
 }
 
 }]);
+
+
+//connect maps
+var initMap = function() {
+        var uluru = {lat: 37, lng: -95};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: uluru
+        });
+        new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+        });
+      }
 
 
 
