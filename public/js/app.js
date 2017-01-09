@@ -3,10 +3,25 @@
 var app = angular.module('coffeeShopFinder', []);
 
 
+app.controller('findShops', ['$http', function($http){
+  var controller = this;
+  this.getShops = function(zipcode){
+  $http({
+    method:'GET'
+  }).then(
+      function(response) {
+        //log to test
+        console.log(response);
+        controller.shops = response.data;
+      },
+      function(response) {
+        console.log(response);
+      });
+    }
+
+}]);
 
 //connect maps
-// app.controller('findMaps', ['$http', function($http){
-
 var initMap = function() {
         var uluru = {lat: 37, lng: -95};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -20,16 +35,14 @@ var initMap = function() {
 
         var request = {
           location: center,
-          // (In meters, estimates roughly 5 miles)
           radius:8047,
-          types: ['cafe']
+          types ['cafe']
         };
 
         var service = new google.maps.places.PlacesService(map);
 
         service.nearbySearch(request, callback);
       }
-
 
       function callback(results, status) {
         if(status == google.maps.places.PlacesServicesStatus.OK){
@@ -48,15 +61,3 @@ var initMap = function() {
       }
 
       google.maps.event.addDomListener(window, 'loal', initialize)
-
-app.controller('findShops', ['$scope', '$http', function($scope, $http){
-  controller = this;
-  $http({
-    method:
-    url:
-  }).then(function(response){
-    console.log(response.results);
-  }, function(response){
-    console.log(response);
-  });
-}]);
