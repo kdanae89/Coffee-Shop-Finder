@@ -12,19 +12,25 @@ app.controller('locatedShops', ['$http', function($http){
   this.getShops = function(zipcode){
   $http({
     method:'GET',
+<<<<<<< HEAD
     // url:
+=======
+    url:''
+>>>>>>> 4e760928bc460d53ba38bfb44831bb5e7e463f00
   }).then(
       function(response) {
         //log to test
         console.log(response);
         controller.shops = response.data;
         //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
+      },
+      function(response) {
         console.log(response);
-      }
-  );
-}
+      });
+    }
 
 }]);
+<<<<<<< HEAD
 
 
 //connect maps
@@ -44,7 +50,7 @@ var initMap = function() {
           radius:8047,
           types ['cafe']
         };
-
+      
         var service = new google.maps.places.PlacesService(map);
 
         service.nearbySearch(request, callback);
@@ -73,3 +79,5 @@ var initMap = function() {
 
 
 //})
+=======
+>>>>>>> 4e760928bc460d53ba38bfb44831bb5e7e463f00
