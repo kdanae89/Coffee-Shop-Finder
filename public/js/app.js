@@ -2,7 +2,28 @@
 //added angular declaration
 var app = angular.module('coffeeShopFinder', []);
 
+//create our controller, calling this one locatedShops
+app.controller('locatedShops', ['$http', function($http){
+  //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
+  var controller = this;
+  //turned our http request into a function so we could call it in our html if needed (say we need it in a click)
+  this.getShops = function(zipcode){
+  $http({
+    method:'GET',
+    // url:''
+  }).then(
+      function(response) {
+        //log to test
+        console.log(response);
+        controller.shops = response.data;
+        //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
+      },
+      function(response) {
+        console.log(response);
+      });
+    }
 
+}]);
 
 <<<<<<< HEAD
 //create our controller, calling this one locatedShops
@@ -85,12 +106,16 @@ var initMap = function() {
 
       google.maps.event.addDomListener(window, 'loal', initialize)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5fae9d42bac1d140e0a1780dd577e8af5dc05a2b
 
 
 
 //})
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 4e760928bc460d53ba38bfb44831bb5e7e463f00
@@ -98,3 +123,5 @@ var initMap = function() {
 >>>>>>> 7c9a87c36e862f42ea54870cea971cc8c7f1b056
 =======
 >>>>>>> cc2df25e957ee0e48afad2676d379e34301c0c97
+=======
+>>>>>>> 5fae9d42bac1d140e0a1780dd577e8af5dc05a2b
