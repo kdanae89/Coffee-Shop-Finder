@@ -42,7 +42,7 @@ var initMap = function() {
         var request = {
           location: center,
           radius:8047,
-          types ['cafe']
+          types: ['cafe']
         };
 
         var service = new google.maps.places.PlacesService(map);
