@@ -18,6 +18,8 @@ var initMap = function() {
   center: mapcenter;
   });
 
+
+
   var request = {
     location: center,
     // (In meters, estimates roughly 5 miles)
@@ -25,13 +27,9 @@ var initMap = function() {
     radius:8047,
     type: ['cafe']
   };
-
   var service = new google.maps.places.PlacesService(map);
-
   service.nearbySearch(request, callback);
 }
-
-
   function callback(results, status) {
     if(status == google.maps.places.PlacesServicesStatus.OK){
       for (var i =0; i < results.length; i++){
