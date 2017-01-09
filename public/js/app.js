@@ -1,8 +1,8 @@
 //DECLARE ANGULAR
 //added angular declaration
 var app = angular.module('coffeeShopFinder', []);
-
-<<<<<<< HEAD
+var geocoder;
+var map;
 
 //create our controller, calling this one locatedShops
 app.controller('locatedShops', ['$http', function($http){
@@ -12,8 +12,7 @@ app.controller('locatedShops', ['$http', function($http){
   this.getShops = function(zipcode){
   $http({
     method:'GET',
-    // url:
-
+    url:''
   }).then(
       function(response) {
         //log to test
@@ -28,18 +27,9 @@ app.controller('locatedShops', ['$http', function($http){
 
 }]);
 
-
-
 //connect maps
-app.controller('findMaps', ['$http', function($http){
-=======
-
-
-//connect maps
-// app.controller('findMaps', ['$http', function($http){
-
->>>>>>> 3bffdb072b7fa08541196bc3a955b1067732b9f5
 var initMap = function() {
+
         var uluru = {lat: 37, lng: -95};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
@@ -52,21 +42,14 @@ var initMap = function() {
 
         var request = {
           location: center,
-          // (In meters, estimates roughly 5 miles)
           radius:8047,
           types: ['cafe']
         };
-<<<<<<< HEAD
-=======
 
         var service = new google.maps.places.PlacesService(map);
->>>>>>> 3bffdb072b7fa08541196bc3a955b1067732b9f5
 
-        var service = new google.maps.places.PlacesService(map); //use places service in google api
-
-        service.nearbySearch(request, callback); //request from above
+        service.nearbySearch(request, callback);
       }
-
 
       function callback(results, status) {
         if(status == google.maps.places.PlacesServicesStatus.OK){
@@ -74,30 +57,51 @@ var initMap = function() {
             createMarker(results[i]);
           }
         }
-      }
 
-      function createMarker(place){
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker ({
-          map: map,
-          position: place.geometry.location
-        });
-      }
-
-<<<<<<< HEAD
-      google.maps.event.addDomListener(window, 'load', initialize)
-=======
-      google.maps.event.addDomListener(window, 'loal', initialize)
-
-app.controller('findShops', ['$scope', '$http', function($scope, $http){
-  controller = this;
-  $http({
-    method:
-    url:
-  }).then(function(response){
-    console.log(response.results);
-  }, function(response){
-    console.log(response);
+  var mapcenter = {lat: 37, lng: -95};
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: mapcenter;
   });
-}]);
->>>>>>> 3bffdb072b7fa08541196bc3a955b1067732b9f5
+  new google.maps.Map(document.getElementById('map'), {
+  zoom: 4,
+  center: mapcenter;
+  });
+
+
+
+  var request = {
+    location: center,
+    // (In meters, estimates roughly 5 miles)
+    postalCode: 'postalCode',
+    radius:8047,
+    type: ['cafe']
+  };
+  var service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+}
+  function callback(results, status) {
+    if(status == google.maps.places.PlacesServicesStatus.OK){
+      for (var i =0; i < results.length; i++){
+        createMarker(results[i]);
+      }
+    }
+  }
+
+  function createMarker(place){
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker ({
+      map: map,
+      position: place.geometry.location
+    });
+  }
+
+
+
+
+
+
+//})
+
+  google.maps.event.addDomListener(window, 'load', initialize)
+
