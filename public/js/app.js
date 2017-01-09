@@ -12,20 +12,20 @@ app.controller('locatedShops', ['$http', function($http){
   this.getShops = function(zipcode){
   $http({
     method:'GET',
-    // url:
+    url:''
   }).then(
       function(response) {
         //log to test
         console.log(response);
         controller.shops = response.data;
         //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
+      },
+      function(response) {
         console.log(response);
-      }
-  );
-}
+      });
+    }
 
 }]);
-
 
 //connect maps
 var initMap = function() {
