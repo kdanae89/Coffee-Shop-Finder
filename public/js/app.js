@@ -5,6 +5,7 @@ var app = angular.module('coffeeShopFinder', []);
 
 
 //connect maps
+// app.controller('findMaps', ['$http', function($http){
 var initMap = function() {
         var uluru = {lat: 37, lng: -95};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -27,6 +28,7 @@ var initMap = function() {
 
         service.nearbySearch(request, callback);
       }
+  // }]);
 
       function callback(results, status) {
         if(status == google.maps.places.PlacesServicesStatus.OK){
