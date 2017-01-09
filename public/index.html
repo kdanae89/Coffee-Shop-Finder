@@ -3,19 +3,24 @@
 <html ng-app="coffeeShopFinder">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
     <script async defer
+<<<<<<< HEAD
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback=initMap">
+=======
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback=initMap&libraries=places">
+>>>>>>> 083639e663d4ac2b5791c1ed91a5df02f244df54
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">
     <title>Coffee Shop Finder</title>
   </head>
-  <body>
+  <body ng-controller="findShops as shops">
     <header>
       <h1>Coffee Shop Finder</h1>
       <!-- added this to test our angular connection -->
+      {{2+2}}
     </header>
     <div id="search">
       <form>
