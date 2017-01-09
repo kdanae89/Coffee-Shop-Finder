@@ -25,7 +25,6 @@ app.controller('locatedShops', ['$http', function($http){
 
 }]);
 
-<<<<<<< HEAD
 //create our controller, calling this one locatedShops
 app.controller('locatedShops', ['$http', function($http){
   //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
@@ -34,15 +33,8 @@ app.controller('locatedShops', ['$http', function($http){
   this.getShops = function(zipcode){
   $http({
     method:'GET',
-<<<<<<< HEAD
-<<<<<<< HEAD
     // url:
-=======
-    url:''
->>>>>>> 4e760928bc460d53ba38bfb44831bb5e7e463f00
-=======
-    url:''
->>>>>>> 7c9a87c36e862f42ea54870cea971cc8c7f1b056
+
   }).then(
       function(response) {
         //log to test
@@ -56,15 +48,11 @@ app.controller('locatedShops', ['$http', function($http){
     }
 
 }]);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 7c9a87c36e862f42ea54870cea971cc8c7f1b056
 
-=======
->>>>>>> cc2df25e957ee0e48afad2676d379e34301c0c97
+
 //connect maps
+// app.controller('findMaps', ['$http', function($http){
 var initMap = function() {
         var uluru = {lat: 37, lng: -95};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -87,6 +75,7 @@ var initMap = function() {
 
         service.nearbySearch(request, callback);
       }
+  // }]);
 
       function callback(results, status) {
         if(status == google.maps.places.PlacesServicesStatus.OK){
@@ -107,6 +96,7 @@ var initMap = function() {
       google.maps.event.addDomListener(window, 'loal', initialize)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
@@ -125,3 +115,7 @@ var initMap = function() {
 >>>>>>> cc2df25e957ee0e48afad2676d379e34301c0c97
 =======
 >>>>>>> 5fae9d42bac1d140e0a1780dd577e8af5dc05a2b
+=======
+
+//})
+>>>>>>> ec70fa4ae608642a8532efd96f5527be8f25b12b
