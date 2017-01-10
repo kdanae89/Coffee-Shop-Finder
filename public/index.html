@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">
     <title>Coffee Shop Finder</title>
   </head>
-  <body>
+  <body onload="initialize()">
     <header>
       <h1>Coffee Shop Finder</h1>
       <!-- added this to test our angular connection -->
@@ -25,9 +25,13 @@
         <input type="text" name="" placeholder="zipcode" value="">
         <input type="submit" value="">
       </form>
-      <div ng-controller="findMaps as find" id="map">
-        {{}}
-      </div>
+      <body onload="initialize()">
+ <div id="map" style="width: 320px; height: 480px;"></div>
+  <div>
+    <input id="address" type="textbox" value="Sydney, NSW">
+    <input type="button" value="Encode" onclick="codeAddress()">
+  </div>
+</body>
     </div>
     <aside id="trending">
       <h1>trending</h1>

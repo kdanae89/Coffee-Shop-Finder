@@ -2,30 +2,10 @@
 //added angular declaration
 var app = angular.module('coffeeShopFinder', []);
 var geocoder;
-var map;
+
 
 //create our controller, calling this one locatedShops
-app.controller('locatedShops', ['$http', function($http){
-  //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
-  var controller = this;
-  //turned our http request into a function so we could call it in our html if needed (say we need it in a click)
-  this.getShops = function(zipcode){
-  $http({
-    method:'GET',
-    url:''
-  }).then(
-      function(response) {
-        //log to test
-        console.log(response);
-        controller.shops = response.data;
-        //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
-      },
-      function(response) {
-        console.log(response);
-      });
-    }
 
-}]);
 
 //connect maps
 var initMap = function() {
@@ -57,26 +37,31 @@ var initMap = function() {
             createMarker(results[i]);
           }
         }
-
-  var mapcenter = {lat: 37, lng: -95};
-  map = new google.maps.Map(document.getElementById('map'), {
+  var initialize = function() {
+    geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(lat: 37, lng: -95);
+  var mapSpecs = {
     zoom: 14,
-    center: mapcenter;
-  });
-  new google.maps.Map(document.getElementById('map'), {
-  zoom: 4,
-  center: mapcenter;
-  });
+    center: mapcenter
+  }
+  map = new google.maps.Map(document.getElementById('map'), mapSpecs);
+  }
 
+  var codeAddress = function(){
+    var address = document.getElementById('address').value;
+    geocoder.geocode( {'address' : address }, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode failed because: ' + status);
+      }
+    });
+  }
 
-
-  var request = {
-    location: center,
-    // (In meters, estimates roughly 5 miles)
-    postalCode: 'postalCode',
-    radius:8047,
-    type: ['cafe']
-  };
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
@@ -97,11 +82,4 @@ var initMap = function() {
   }
 
 
-
-
-
-
-//})
-
   google.maps.event.addDomListener(window, 'load', initialize)
-
