@@ -7,6 +7,35 @@ var map;
 
 //create our controller, calling this one locatedShops
 
+app.controller('locatedShops', ['$http', function($http){
+  //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
+  var controller = this;
+  //turned our http request into a function so we could call it in our html if needed (say we need it in a click)
+  this.getShops = function(zipcode){
+  $http({
+    method:'GET',
+    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+zipcode+&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback
+  }).then(
+    /*
+      now, we need to make another call with the location extracted from the results array:
+
+      var lat = results[i].geometry.location.lat;
+      var lng = results[i].geometry.location.lng;
+
+      url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location=lat,long&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+    */
+      function(response) {
+        //log to test
+        console.log(response);
+        controller.shops = response.data;
+        //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
+      },
+      function(response) {
+        console.log(response);
+      });
+    }
+
+}]);
 
 //connect maps
 var initMap = function() {
@@ -48,6 +77,24 @@ var initMap = function() {
   var mapSpecs = {
     zoom: 14,
     center: mapcenter
+  });
+
+  var request = {
+    location: center,
+    // (In meters, estimates roughly 5 miles)
+    postalCode: 'postalCode',
+    radius:8047,
+    type: ['cafe']
+  };
+  var service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+}
+  function callback(results, status) {
+    if(status == google.maps.places.PlacesServicesStatus.OK){
+      for (var i =0; i < results.length; i++){
+        createMarker(results[i]);
+      }
+    }
   }
   map = new google.maps.Map(document.getElementById('map'), mapSpecs);
 };

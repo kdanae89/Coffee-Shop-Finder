@@ -20,17 +20,24 @@
       <!-- added this to test our angular connection -->
     </header>
     <div id="search">
-      <!-- <form>
+      <form>
         <label for="">Where are you searching?</label>
         <input type="text" name="" placeholder="zipcode" value="">
         <input type="submit" value="">
-      </form> -->
- <div id="map" style="width: 320px; height: 480px;"></div>
+      </form>
+ <!-- <div id="map" style="width: 320px; height: 480px;"></div>
   <div>
     <input id="address" type="textbox" value="Sydney, NSW">
     <input type="button" value="Encode" onclick="codeAddress()">
-  </div>
+  </div> -->
 </body>
+
+        <input type="text" placeholder="zipcode" value="zipcode">
+        <input ng-click="getShops(zipcode)" type="submit" value="">
+      </form>
+      <div ng-controller="findMaps as find" id="map">
+
+      </div>
     </div>
     <aside id="trending">
       <h1>trending</h1>
