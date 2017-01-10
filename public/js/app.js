@@ -37,6 +37,7 @@ app.controller('locatedShops', ['$http', function($http){
 
 }]);
 
+
 //connect maps
 var initMap = function() {
 
@@ -77,7 +78,17 @@ var initMap = function() {
   var mapSpecs = {
     zoom: 14,
     center: mapcenter
+
+
   });
+<<<<<<< HEAD
+=======
+  new google.maps.Map(document.getElementById('map'), {
+  zoom: 4,
+  center: mapcenter
+  });
+
+>>>>>>> b9934898a37ab0c4c78f887bd67728f0eb13cbfb
 
   var request = {
     location: center,
@@ -86,9 +97,12 @@ var initMap = function() {
     radius:8047,
     type: ['cafe']
   };
+
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
+  console.log(request);
 }
+
   function callback(results, status) {
     if(status == google.maps.places.PlacesServicesStatus.OK){
       for (var i =0; i < results.length; i++){
@@ -96,6 +110,7 @@ var initMap = function() {
       }
     }
   }
+<<<<<<< HEAD
   map = new google.maps.Map(document.getElementById('map'), mapSpecs);
 };
 
@@ -111,6 +126,24 @@ var initMap = function() {
       } else {
         alert('Geocode failed because: ' + status);
       }
+=======
+
+  // var service = new google.maps.places.PlacesService(map);
+  // service.nearbySearch({
+  //   location: pyrmont,
+  //   radius: 500,
+  //   type: ['cafe']
+  // }, function(results){
+  //   console.log(results)
+  // });
+  //
+  // console.log('hi');
+  function createMarker(place){
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker ({
+      map: map,
+      position: place.geometry.location
+>>>>>>> b9934898a37ab0c4c78f887bd67728f0eb13cbfb
     });
   }
 
