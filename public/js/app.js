@@ -2,6 +2,7 @@
 //added angular declaration
 var app = angular.module('coffeeShopFinder', []);
 var geocoder;
+var map;
 
 
 //create our controller, calling this one locatedShops
@@ -26,6 +27,8 @@ var initMap = function() {
           types: ['cafe']
         };
 
+        initmap();
+
         var service = new google.maps.places.PlacesService(map);
 
         service.nearbySearch(request, callback);
@@ -37,15 +40,17 @@ var initMap = function() {
             createMarker(results[i]);
           }
         }
+      }
+
   var initialize = function() {
     geocoder = new google.maps.Geocoder();
-  var latlng = new google.maps.LatLng(lat: 37, lng: -95);
+  var latlng = new google.maps.LatLng(37, -95);
   var mapSpecs = {
     zoom: 14,
     center: mapcenter
   }
   map = new google.maps.Map(document.getElementById('map'), mapSpecs);
-  }
+};
 
   var codeAddress = function(){
     var address = document.getElementById('address').value;
@@ -62,24 +67,23 @@ var initMap = function() {
     });
   }
 
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-}
-  function callback(results, status) {
-    if(status == google.maps.places.PlacesServicesStatus.OK){
-      for (var i =0; i < results.length; i++){
-        createMarker(results[i]);
-      }
-    }
-  }
+  // var service = new google.maps.places.PlacesService(map);
+  // service.nearbySearch(request, callback);
+  // function callback(results, status) {
+  //   if(status == google.maps.places.PlacesServicesStatus.OK){
+  //     for (var i =0; i < results.length; i++){
+  //       createMarker(results[i]);
+  //     }
+  //   }
+  // }
 
-  function createMarker(place){
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker ({
-      map: map,
-      position: place.geometry.location
-    });
-  }
+  // function createMarker(place){
+  //   var placeLoc = place.geometry.location;
+  //   var marker = new google.maps.Marker ({
+  //     map: map,
+  //     position: place.geometry.location
+  //   });
+  // }
 
 
   google.maps.event.addDomListener(window, 'load', initialize)
