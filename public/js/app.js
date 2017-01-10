@@ -38,16 +38,12 @@ app.controller('locatedShops', ['$http', function($http){
 
 //connect maps
 var initMap = function() {
-        var uluru = {lat: 37, lng: -95};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: uluru
-        });
-        new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-        });
-      }
+  var location = {lat: 40.09024, lng: -100.712891};
+  new google.maps.Map(document.getElementById('map'), {
+  zoom: 4,
+  center: location
+  });
+}
 
 //         var request = {
 //           location: center,
