@@ -81,14 +81,13 @@ var initMap = function() {
 
 
   });
-<<<<<<< HEAD
-=======
+
   new google.maps.Map(document.getElementById('map'), {
   zoom: 4,
   center: mapcenter
   });
 
->>>>>>> b9934898a37ab0c4c78f887bd67728f0eb13cbfb
+
 
   var request = {
     location: center,
@@ -110,7 +109,7 @@ var initMap = function() {
       }
     }
   }
-<<<<<<< HEAD
+
   map = new google.maps.Map(document.getElementById('map'), mapSpecs);
 };
 
@@ -126,7 +125,7 @@ var initMap = function() {
       } else {
         alert('Geocode failed because: ' + status);
       }
-=======
+
 
   // var service = new google.maps.places.PlacesService(map);
   // service.nearbySearch({
@@ -143,7 +142,7 @@ var initMap = function() {
     var marker = new google.maps.Marker ({
       map: map,
       position: place.geometry.location
->>>>>>> b9934898a37ab0c4c78f887bd67728f0eb13cbfb
+
     });
   }
 
