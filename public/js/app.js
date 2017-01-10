@@ -20,7 +20,7 @@ app.controller('locatedShops', ['$http', function($http){
      var lat = results[i].geometry.location.lat;
      var lng = results[i].geometry.location.lng;
 
-     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location=lat,long&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location=lat,lng&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
    */
   }).then(
       // function(response) {
