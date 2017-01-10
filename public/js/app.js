@@ -4,7 +4,6 @@ var app = angular.module('coffeeShopFinder', []);
 var geocoder;
 var map;
 
-
 //create our controller, calling this one locatedShops
 
 app.controller('locatedShops', ['$http', function($http){
