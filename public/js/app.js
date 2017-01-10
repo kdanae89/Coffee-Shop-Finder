@@ -12,8 +12,16 @@ app.controller('locatedShops', ['$http', function($http){
   this.getShops = function(zipcode){
   $http({
     method:'GET',
-    url:''
+    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+zipcode+&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback
   }).then(
+    /*
+      now, we need to make another call with the location extracted from the results array:
+
+      var lat = results[i].geometry.location.lat;
+      var lng = results[i].geometry.location.lng;
+
+      url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location=lat,long&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+    */
       function(response) {
         //log to test
         console.log(response);
@@ -61,11 +69,11 @@ var initMap = function() {
   var mapcenter = {lat: 37, lng: -95};
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
-    center: mapcenter;
+    center: mapcenter
   });
   new google.maps.Map(document.getElementById('map'), {
   zoom: 4,
-  center: mapcenter;
+  center: mapcenter
   });
 
 
@@ -104,4 +112,3 @@ var initMap = function() {
 //})
 
   google.maps.event.addDomListener(window, 'load', initialize)
-
