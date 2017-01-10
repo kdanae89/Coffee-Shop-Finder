@@ -3,36 +3,43 @@ var app = angular.module('coffeeShopFinder', []);
 
 //create our controller, calling this one locatedShops
 app.controller('locatedShops', ['$http', function($http){
-
-//   //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
+  //global this
   var controller = this;
-//   //turned our http request into a function so we could call it in our html if needed (say we need it in a click)
-  this.getShops = function(zipcode){
+  //get our zip into our url
+  this.searchQuery = 'zipcode';
+  //function to get a list of shop locations
+  this.getShops = function(){
   $http({
     method:'GET',
-    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+zipcode+&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback
-   url:''
- }).then(
-   /*
-     now, we need to make another call with the location extracted from the results array:
-
-     var lat = results[i].geometry.location.lat;
-     var lng = results[i].geometry.location.lng;
-
-     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location=lat,long&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
-   */
-  }).then(
-      function(response) {
-        //log to test
-        console.log(response);
-        controller.shops = response.data;
-//         //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
-//       },
-      function(response) {
-        console.log(response);
-      });
-    }
-//
+    //grab many shops by zip
+    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+ }).then(function(response) {
+     //log to test what we get back
+     console.log(response.data.results[0].geometry.location.lat);
+     console.log(response.data.results[0].geometry.location.lng);
+     var lat = response.data.results[0].geometry.location.lat;
+     var lng = response.data.results[0].geometry.location.lng;
+     var latlng = lat.toString().concat(',',lng);
+     $http({
+       method:'GET',
+       url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+     }).then(function(response) {
+       console.log(response);
+     }), function(response) {
+       console.log(response);
+     }
+   }), function(response) {
+     console.log(response);
+   }
+  //  $http({
+  //    method:'GET',
+  //    url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+' ,'+lng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+  //  }).then(function(response) {
+  //    console.log(response);
+  //  }), function(response) {
+  //    console.log(response);
+  //  }
+  };
 }]);
 
 //connect maps
