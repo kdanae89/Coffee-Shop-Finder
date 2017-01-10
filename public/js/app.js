@@ -2,7 +2,11 @@
 //added angular declaration
 var app = angular.module('coffeeShopFinder', []);
 
+<<<<<<< HEAD
 
+=======
+//create our controller, calling this one locatedShops
+>>>>>>> e2f81b6d0139c5b408dc3c368c9c5f04a81ce0ee
 
 //create our controller, calling this one locatedShops
 app.controller('locatedShops', ['$http', function($http){
