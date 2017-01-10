@@ -1,70 +1,78 @@
 //DECLARE ANGULAR
-  var app = angular.module('coffeeShopFinder', []);
+var app = angular.module('coffeeShopFinder', []);
 
- var geocoder;
- var map;
+//create our controller, calling this one locatedShops
+app.controller('locatedShops', ['$http', function($http){
 
-  //create our controller, calling this one locatedShops
+//   //moved our global this into our controller, its global to the controller, outside of the controller "this" is not the controller and thats what we need "this" to be.
+  var controller = this;
+//   //turned our http request into a function so we could call it in our html if needed (say we need it in a click)
+  this.getShops = function(zipcode){
+  $http({
+    method:'GET',
+    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+zipcode+&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback
+   url:''
+ }).then(
+   /*
+     now, we need to make another call with the location extracted from the results array:
 
-  //connect maps
-  var initMap = function() {
+     var lat = results[i].geometry.location.lat;
+     var lng = results[i].geometry.location.lng;
 
-          var uluru = {lat: 37, lng: -95};
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            var initMap = function() {
-              createMarker(results[i]);
-            }
-          }
-       }
+     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location=lat,long&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+   */
+  }).then(
+      function(response) {
+        //log to test
+        console.log(response);
+        controller.shops = response.data;
+//         //(so for now this section will be guesswork until i can get into our API and find what data im getting back, and how the response will be formatted.)
+//       },
+      function(response) {
+        console.log(response);
+      });
+    }
+//
+}]);
 
-       function createMarker(place){
-         var placeLoc = place.geometry.location;
-         var marker = new google.maps.Marker ({
-           map: map,
-           position: place.geometry.location
-         });
-   var mapcenter = {lat: 37, lng: -95};
-   map = new google.maps.Map(document.getElementById('map'), {
-     zoom: 14,
-     center: mapcenter;
-   });
-   new google.maps.Map(document.getElementById('map'), {
-   zoom: 4,
-   center: mapcenter;
-   });
+//connect maps
+var initMap = function() {
+  var location = {lat: 40.09024, lng: -100.712891};
+  new google.maps.Map(document.getElementById('map'), {
+  zoom: 4,
+  center: location
+  });
+}
 
-
-
-   var request = {
-     location: center,
-     // (In meters, estimates roughly 5 miles)
-     postalCode: 'postalCode',
-     radius:8047,
-     type: ['cafe']
-   };
-   var service = new google.maps.places.PlacesService(map);
-   service.nearbySearch(request, callback);
- }
-   function callback(results, status) {
-     if(status == google.maps.places.PlacesServicesStatus.OK){
-       for (var i =0; i < results.length; i++){
-         createMarker(results[i]);
-        }
-     }
-   }
-
-   function createMarker(place){
-     var placeLoc = place.geometry.location;
-     var marker = new google.maps.Marker ({
-       map: map,
-       position: place.geometry.location
-     });
-   }
-
-
-
-   google.maps.event.addDomListener(window, 'load', initialize)
-
-
-  //})
+//         var request = {
+//           location: center,
+//           radius:8047,
+//           types ['cafe']
+//         };
+//
+//         var service = new google.maps.places.PlacesService(map);
+//
+//         service.nearbySearch(request, callback);
+//       }
+//
+//       function callback(results, status) {
+//         if(status == google.maps.places.PlacesServicesStatus.OK){
+//           for (var i =0; i < results.length; i++){
+//             createMarker(results[i]);
+//           }
+//         }
+//       }
+//
+//       function createMarker(place){
+//         var placeLoc = place.geometry.location;
+//         var marker = new google.maps.Marker ({
+//           map: map,
+//           position: place.geometry.location
+//         });
+//       }
+//
+      google.maps.event.addDomListener(window, 'load', initialize)
+//
+//
+//
+// })
