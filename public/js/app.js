@@ -5,8 +5,7 @@ var app = angular.module('coffeeShopFinder', []);
 app.controller('locatedShops', ['$http', function($http){
   //global this
   var controller = this;
-  //get our zip into our url
-  //function to get a list of shop locations
+  //function to get coffee shops
   this.getShops = function(){
   $http({
     //grab many shops by zip
@@ -40,7 +39,6 @@ function initialize() {
     type: 'cafe'
   };
 
-
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
@@ -71,6 +69,8 @@ var initMap = function() {
   center: location
   });
 }
+<<<<<<< HEAD
+=======
 
 //         var request = {
 //           location: center,
@@ -98,3 +98,4 @@ var initMap = function() {
 //           position: place.geometry.location
 //         });
 //       }
+>>>>>>> master
