@@ -49,6 +49,7 @@ function callback(results, status) {
     for (var i = 0; i < results.length; i++) {
       controller.places = results[i];
       console.log(controller.places.name);
+      console.log(controller);
       // controller.allShops = place;
     }
   }

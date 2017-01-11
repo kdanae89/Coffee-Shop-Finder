@@ -20,6 +20,7 @@
   "dependencies": {
     "@google/maps": "^0.3.1",
     "body-parser": "^1.15.2",
+    "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "mongoose": "^4.7.6",
     "nodemon": "^1.11.0"
