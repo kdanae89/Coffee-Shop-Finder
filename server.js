@@ -8,23 +8,18 @@ var googleMapsClient = require('@google/maps').createClient({
 });
 
 
-
 // PORT
 var port = process.env.PORT || 3000;
 
 //MIDDLEWARE
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // REQUIRE CONTROLLER
 var findShops = require('./controllers/coffeeShops.js');
 
 // CONTROLLER MIDDLEWARE
-  // app.use(
-  //   route,
-  //   findShops
-  // );
+  app.use('/', findShops);
 
 //DB
 var db = mongoose.connection;
