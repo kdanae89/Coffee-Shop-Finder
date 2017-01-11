@@ -6,39 +6,29 @@ app.controller('locatedShops', ['$http', function($http){
   //global this
   var controller = this;
   //get our zip into our url
-  this.searchQuery = 'zipcode';
   //function to get a list of shop locations
   this.getShops = function(){
   $http({
     //grab many shops by zip
-    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
- }).then(function(response) {
-     //log to test what we get back
-     console.log(response.data.results[0].geometry.location.lat);
-     console.log(response.data.results[0].geometry.location.lng);
+    method: 'GET',
+    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM',
+ })
+ .then(function(response) {
+ //     //log to test what we get back
      var lat = response.data.results[0].geometry.location.lat;
      var lng = response.data.results[0].geometry.location.lng;
+     console.log(lat, lng);
      var latlng = lat.toString().concat(',',lng);
-     $http({
-       method:'GET',
-       url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
-     }).then(function(response) {
-       console.log(response);
-     }), function(response) {
-       console.log(response);
-     }
-   }), function(response) {
-     console.log(response);
-   }
-  //  $http({
-  //    method:'GET',
-  //    url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+' ,'+lng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
-  //  }).then(function(response) {
-  //    console.log(response);
-  //  }), function(response) {
-  //    console.log(response);
-  //  }
-  };
+     return latlng;
+ }).then(function(latlng) {
+   $http({
+     method:'JSONP',
+     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
+   }).then(function(response) {
+     console.log(response.data.results[0].name);
+   })
+ });
+}
 }]);
 
 //connect maps
@@ -81,4 +71,4 @@ var initMap = function() {
 //
 //
 //
-// })
+//

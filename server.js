@@ -4,16 +4,25 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var googleMapsClient = require('@google/maps').createClient({
-  key: 'AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+  key: 'AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
 });
+var cors = require('cors');
+
 
 // PORT
 var port = process.env.PORT || 3000;
+
+var corsOptions = {
+  "origin": 'Access-Control-Allow-Origin: *',
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false
+}
 
 //MIDDLEWARE
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // REQUIRE CONTROLLER
 var findShops = require('./controllers/coffeeShops.js');
