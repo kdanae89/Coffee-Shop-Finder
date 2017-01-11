@@ -1,13 +1,23 @@
 //DEPENDENCIES
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-var Location = require('../models/location.js');
-var googleapi = require('@google/maps');
+var Place = require('../models/place.js');
 
-//get '/' and display initial information (the only initial info wed have that is stored locally is the radius for the drop down if we do that.)
+// Get all cafes
+router.get('/', function(req, res) {
+  Place.find({}, function(err, allPlaces){
+    res.json(allPlaces);
+  })
+});
 
-//we will only need to have more routes if were displaying any data from our local database. Anything from our API will come from http requests viz
+
+router.post('/', function(req, res) {
+  Place.create(req.body, function(err, foundPlace){
+    Place.find({}, function(err, allPlaces) {
+      res.json(allPlaces);
+    })
+  });
+})
 
 //EXPORT ROUTER
 module.exports = router;
