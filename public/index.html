@@ -3,12 +3,9 @@
 <html ng-app="coffeeShopFinder">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
-    <script async defer
-
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback=initMap&libraries=places">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8">
     </script>
+    <script async defer   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM&callback=initMap&libraries=places"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">
@@ -17,41 +14,13 @@
   <body ng-controller="locatedShops as shops">
     <header>
       <h1>Coffee Shop Finder</h1>
-      <!-- added this to test our angular connection -->
     </header>
-    <div id="search">
-      <form ng-submit="shops.getShops()">
-        <label for="">Where are you searching?</label>
-        <input ng-model="shops.searchQuery" type="text" placeholder="zipcode">
-        <input type="submit" value="">
-      </form>
- <!-- <div id="map" style="width: 320px; height: 480px;"></div>
-  <div>
-    <input id="address" type="textbox" value="Sydney, NSW">
-    <input type="button" value="Encode" onclick="codeAddress()">
-  </div> -->
-  <div id="map">
-  </div>
-  <aside id="trending">
-    <h1>trending</h1>
-    <ul>
-      <li>Now</li>
-      <li>This Week</li>
-      <li>Of All Time</li>
-    </ul>
-  </aside>
-  </body>
-  </html>
-
-
-        <!-- <input type="text" placeholder="zipcode" value="zipcode">
-        <input ng-click="getShops(zipcode)" type="submit" value="">
-      </form>
-      <div ng-controller="findMaps as find" id="map"> -->
-
-      <div id="map">
-      </div>
-    </div>
+    <form ng-submit="shops.getShops()">
+      <label for="">Where are you searching?</label>
+      <input ng-model="shops.searchQuery" type="text" placeholder="zipcode">
+      <input type="submit" value="">
+    </form>
+    <div id="map"></div>
     <aside id="trending">
       <h1>trending</h1>
       <ul>
