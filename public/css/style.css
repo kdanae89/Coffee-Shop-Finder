@@ -12,9 +12,10 @@ h1 {
   text-align: center;
 }
 
-#search {
+form {
   margin-left: 2%;
 }
+
 #map {
   height: 500px;
   width: 500px;
