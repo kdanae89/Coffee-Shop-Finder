@@ -2,7 +2,7 @@
 var app = angular.module('coffeeShopFinder', []);
 
 //create our controller, calling this one locatedShops
-app.controller('locatedShops', ['$http', function($http){
+app.controller('locatedShops', ['$http', '$httpProvider', function($http, '$httpProvider'){
   //global this
   var controller = this;
   //get our zip into our url
@@ -22,10 +22,12 @@ app.controller('locatedShops', ['$http', function($http){
      return latlng;
  }).then(function(latlng) {
    $http({
-     method:'JSONP',
-     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
+    method:'GET',
+    url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
    }).then(function(response) {
      console.log(response.data.results[0].name);
+   }, function(reason) {
+     console.log(reason);
    })
  });
 }
@@ -66,9 +68,3 @@ var initMap = function() {
 //           position: place.geometry.location
 //         });
 //       }
-//
-      google.maps.event.addDomListener(window, 'load', initialize)
-//
-//
-//
-//
