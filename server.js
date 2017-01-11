@@ -7,6 +7,8 @@ var googleMapsClient = require('@google/maps').createClient({
   key: 'AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
 });
 var cors = require('cors');
+var morgan = require('morgan');
+
 
 
 // PORT
@@ -23,6 +25,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(morgan('short'));
 
 // REQUIRE CONTROLLER
 var findShops = require('./controllers/coffeeShops.js');

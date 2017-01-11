@@ -18,6 +18,7 @@ app.controller('locatedShops', ['$http', function($http){
      var lat = response.data.results[0].geometry.location.lat;
      var lng = response.data.results[0].geometry.location.lng;
      console.log(lat, lng);
+
      var LatLng = lat.toString().concat(',',lng);
 
 
@@ -96,9 +97,4 @@ var initMap = function() {
 //           position: place.geometry.location
 //         });
 //       }
-//
-      // google.maps.event.addDomListener(window, 'load', initialize)
-//
-//
-//
-//
+
