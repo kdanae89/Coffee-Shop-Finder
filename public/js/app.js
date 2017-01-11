@@ -17,28 +17,33 @@ app.controller('locatedShops', ['$http', function($http){
      //log to test what we get back
      console.log(response.data.results[0].geometry.location.lat);
      console.log(response.data.results[0].geometry.location.lng);
-     controller.lat = response.data.results[0].geometry.location.lat;
-     controller.lng = response.data.results[0].geometry.location.lng;
-    //  var latlng = lat.toString().concat(',',lng);
-    //  $http({
-    //    method:'GET',
-    //    url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
-    //  }).then(function(stuff) {
-    //    console.log(stuff);
-    //  }), function(stuff) {
-    //    console.log(stuff);
-    //  }
+     var lat = response.data.results[0].geometry.location.lat;
+     var lng = response.data.results[0].geometry.location.lng;
+     var latlng = lat.toString().concat(',',lng);
+     $http({
+       method:'GET',
+       dataType: 'jsonp',
+       cache: false,
+       url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+latlng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback',
+      success: function(response){
+                alert(response);
+              }
+     }).then(function(stuff) {
+       console.log(stuff);
+     }), function(stuff) {
+       console.log(stuff);
+     }
    }), function(response) {
      console.log(response);
    }
-   $http({
-     method:'GET',
-     url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+' ,'+lng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
-   }).then(function(stuff) {
-     console.log(stuff);
-   }), function(stuff) {
-     console.log(stuff);
-   }
+  //  $http({
+  //    method:'GET',
+  //    url: 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+' ,'+lng+'&type=cafe&rankby=distance&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
+  //  }).then(function(stuff) {
+  //    console.log(stuff);
+  //  }), function(stuff) {
+  //    console.log(stuff);
+  //  }
   };
 }]);
 
