@@ -3,13 +3,6 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var googleMapsClient = require('@google/maps').createClient({
-  key: 'AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
-});
-var cors = require('cors');
-var morgan = require('morgan');
-
-
 
 // PORT
 var port = process.env.PORT || 3000;
@@ -22,19 +15,13 @@ var corsOptions = {
 
 //MIDDLEWARE
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
-app.use(morgan('short'));
 
 // REQUIRE CONTROLLER
 var findShops = require('./controllers/coffeeShops.js');
 
 // CONTROLLER MIDDLEWARE
-  // app.use(
-  //   route,
-  //   findShops
-  // );
+  app.use('/', findShops);
 
 //DB
 var db = mongoose.connection;
