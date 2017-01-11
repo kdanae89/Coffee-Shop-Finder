@@ -10,7 +10,6 @@ app.controller('locatedShops', ['$http', function($http){
   //function to get a list of shop locations
   this.getShops = function(){
   $http({
-    method:'GET',
     //grab many shops by zip
     url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyBcU1ZlzkaDTnc2YWlIW5kurm9yEIdZLKE&callback'
  }).then(function(response) {
