@@ -3,15 +3,12 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM'
+});
 
 // PORT
 var port = process.env.PORT || 3000;
-
-var corsOptions = {
-  "origin": 'Access-Control-Allow-Origin: *',
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false
-}
 
 //MIDDLEWARE
 app.use(express.static('public'));
