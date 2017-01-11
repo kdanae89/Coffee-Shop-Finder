@@ -2,7 +2,7 @@
 var app = angular.module('coffeeShopFinder', []);
 
 //create our controller, calling this one locatedShops
-app.controller('locatedShops', ['$http', '$httpProvider', function($http, '$httpProvider'){
+app.controller('locatedShops', ['$http', function($http){
   //global this
   var controller = this;
   //get our zip into our url
