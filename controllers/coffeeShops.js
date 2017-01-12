@@ -3,10 +3,10 @@ var express = require('express');
 var router = express.Router();
 var Place = require('../models/place.js');
 
-// Get all cafes
-router.get('/', function(req, res) {
-  Place.find({}, function(err, allPlaces){
-    res.json(allPlaces);
+// Get all cafes by id
+router.get('/:id', function(req, res) {
+  Place.findById(req.params.id, function(err, foundShop){
+    res.json(foundShop);
   })
 });
 
