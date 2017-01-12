@@ -47,11 +47,12 @@ initialize();
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      controller.places = results[i];
-      console.log(controller.places.name);
-      console.log(controller);
+      var allShops = [];
+      shops.push(results[i]);
       // controller.allShops = place;
     }
+    controller.places = allShops;
+    console.log(allShops[0].name);
   }
 }
 
