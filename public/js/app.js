@@ -10,7 +10,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
     console.log(id);
     $http({
       method:'POST',
-      url:'http://localhost:3000' || 'https://www.mlab.com/databases/heroku_dbf6wnbd',
+      url:'https://www.mlab.com/databases/heroku_dbf6wnbd',
       data: this.id
     }).then(
       function(response) {//success
