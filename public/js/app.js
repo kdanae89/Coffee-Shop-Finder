@@ -7,59 +7,69 @@ app.controller('locatedShops', ['$http', function($http){
   var controller = this;
   //function to get coffee shops
   this.getShops = function(){
-  $http({
     //grab many shops by zip
-    method: 'GET',
-    url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM',
- })
- .then(function(response) {
-   //log to test what we get back
-     var lat = response.data.results[0].geometry.location.lat;
-     var lng = response.data.results[0].geometry.location.lng;
-    //  console.log(lat, lng);
+    $http({
+      method: 'GET',
+      url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM',
+    })
+    .then(function(response) {
+      var lat = response.data.results[0].geometry.location.lat;
+      var lng = response.data.results[0].geometry.location.lng;
+      //  console.log(lat, lng);
+      var LatLng = lat.toString().concat(',',lng);
 
-     var LatLng = lat.toString().concat(',',lng);
+      var map;
+      var service;
 
+      function initialize() {
+        var locatedAt = new google.maps.LatLng(lat,lng);
+        // console.log(locatedAt);
 
-     var map;
-     var service;
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: locatedAt,
+          zoom: 15
+        });
 
-function initialize() {
-  var locatedAt = new google.maps.LatLng(lat,lng);
-  // console.log(locatedAt);
+        var request = {
+          location: locatedAt,
+          types: ['cafe'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+        };
 
-  map = new google.maps.Map(document.getElementById('map'), {
-      center: locatedAt,
-      zoom: 15
-    });
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
 
-  var request = {
-    location: locatedAt,
-    radius: '8047',
-    type: 'cafe'
-  };
+        var infowindow = new google.maps.InfoWindow({
+          content: "hi kaylie"
+        });
 
-  service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-}
-initialize();
+        var marker = new google.maps.Marker({
+          position: locatedAt,
+          map: map,
+          title: 'Details'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      var allShops = [];
-      shops.push(results[i]);
-      // controller.allShops = place;
+      initialize();
+
+    })
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        var shops = [];
+        results.forEach(function(shop) {
+          shops.push(shop);
+      });
+      controller.places = shops;
+      // console.log(shops.name, ": ", shops.vicinity);
+      console.log(controller.places);
+      return controller.places;
+      }
     }
-    controller.places = allShops;
-    console.log(allShops[0].name);
   }
-}
-
-   }, function(response) {
-    //  console.log(response);
-   })
-};
 
 }]);
 
@@ -67,7 +77,7 @@ function callback(results, status) {
 var initMap = function() {
   var location = {lat: 40.09024, lng: -100.712891};
   new google.maps.Map(document.getElementById('map'), {
-  zoom: 4,
-  center: location
+    zoom: 4,
+    center: location
   });
 }
