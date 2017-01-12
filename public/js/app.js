@@ -6,6 +6,19 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
   //global this
   var controller = this;
   //function to get coffee shops
+  this.getLikes = function(id) {
+    console.log(id);
+    $http({
+      method:'POST',
+      url:'http://localhost:3000',
+      data: this.id
+    }).then(
+      function(response) {//success
+        controller.likes = response.data;
+        console.log(controller.likes);
+      }
+    );
+  }
   this.getShops = function(){
     //grab many shops by zip
     $http({

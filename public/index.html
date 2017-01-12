@@ -16,13 +16,16 @@
       <h1>Coffee Shop Finder</h1>
     </header>
     <form ng-submit="shops.getShops()">
-      <label for="">Where are you searching?</label>
+      <label>Where are you searching?</label>
       <input ng-model="shops.searchQuery" type="text" placeholder="zipcode">
       <input type="submit" value="">
     </form>
     <div id="map"></div>
     <ul id="results">
-      <li ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}} </li>
+      <li ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}} <form>
+        <input ng-click="shops.getLikes(shop.id)" type="submit" value="Like" ng-model="shop.id">
+      </form></li>
+
     </ul>
     <aside id="trending">
       <h1>trending</h1>
