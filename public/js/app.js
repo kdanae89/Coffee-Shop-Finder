@@ -64,9 +64,7 @@ app.controller('locatedShops', ['$http', function($http){
           shops.push(shop);
       });
       controller.places = shops;
-      console.log(shops.name, ": ", shops.vicinity);
       console.log(controller.places);
-      console.log(controller.places.name);
       // return controller.places;
         }
       }
