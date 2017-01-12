@@ -1,6 +1,7 @@
 //DEPENDENCIES
 var express = require('express');
 var app = express();
+var dotenv = require('dotenv').config();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var googleMapsClient = require('@google/maps').createClient({
