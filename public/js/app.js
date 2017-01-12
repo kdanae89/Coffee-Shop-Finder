@@ -14,7 +14,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
     console.log(id);
     $http({
       method:'POST',
-      url:'mongodb://heroku_dbf6wnbd:i57nisvaofc2u7idpha4lljoke@ds157268.mlab.com:57268/heroku_dbf6wnbd',
+      url:'/',
       data: this.id
     }).then(
       function(response) {//success
