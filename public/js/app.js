@@ -32,12 +32,25 @@ app.controller('locatedShops', ['$http', function($http){
 
         var request = {
           location: locatedAt,
-          radius: '8047',
-          type: 'cafe'
+          types: ['cafe'],
+          rankBy: google.maps.places.RankBy.DISTANCE
         };
 
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, callback);
+
+        var infowindow = new google.maps.InfoWindow({
+          content: "hi kaylie"
+        });
+
+        var marker = new google.maps.Marker({
+          position: locatedAt,
+          map: map,
+          title: 'Details'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
       }
 
       initialize();
@@ -48,11 +61,12 @@ app.controller('locatedShops', ['$http', function($http){
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         var shops = [];
         results.forEach(function(shop) {
-        shops.push(shop);
+          shops.push(shop);
       });
       controller.places = shops;
       // console.log(shops.name, ": ", shops.vicinity);
       console.log(controller.places);
+      return controller.places;
       }
     }
   }
