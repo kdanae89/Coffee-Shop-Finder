@@ -17,19 +17,19 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
       function(response) {//success
         controller.data = response.data;
         controller.data.forEach(function(entry) {
+          var entries = [];
           $http({
             method:'GET',
             url:'/:_'+entry._id,
             data: entry.likes
           })
-          var entries = [];
           entries.push(entry);
           //got likes to increase by 1
           entry.likes++;
           console.log(entry.likes);
           console.log(entry._id);
+          controller.entry = entries;
         });
-        controller.entry = entries;
         console.log(controller.entry);
       }
     );
