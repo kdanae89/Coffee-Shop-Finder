@@ -24,10 +24,7 @@
     </form>
     <div id="map"></div>
     <ul id="results">
-      <li  ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}}
-        <form>
-          <input ng-model="shop.id" ng-click="shops.getLikes(shop.id)" type="submit" value="Like">
-        </form>
+      <li  ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}}<p ng-if="shop.opening_hours.open_now==true">Open Now!</p>
       </li>
     </ul>
   </body>
