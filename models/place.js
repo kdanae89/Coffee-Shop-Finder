@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var placeSchema = mongoose.Schema({
 	vicinity: {type: String, unique: true},
-	likes: { type: Number, default: 0 }
+	id: String	
 })
 
 var Place = mongoose.model('Place', placeSchema);

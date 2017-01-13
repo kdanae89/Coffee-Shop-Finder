@@ -6,12 +6,6 @@
 
 * A user will be returned a list of coffee shops/cafes in order of distance.
 
-* A user will also have access to rating/review information of the shop.
+* A user should be able to see the name and address of coffee shops. 
 
-* A user should be able to see the *TRENDING* coffee shops based on algorithm: now, weekly, all time (likes depreciate in value over time)
-
-* When a user clicks on a coffee shop they're interested in, the business profile card pops up
-
-* A user will be given directions to the coffee shop of their choosing (stretch goal)
-
-* A user will select the radius of their search by selecting the distance in miles from a drop down menu (stretch).
+* When a user clicks on a the like button, that coffee shop is added to the database of trending places.

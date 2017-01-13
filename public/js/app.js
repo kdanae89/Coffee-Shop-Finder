@@ -1,5 +1,4 @@
-
-//DECLARE ANGULAR
+//Declare angular
 var app = angular.module('coffeeShopFinder', ['ngRoute']);
 
 //create our controller, calling this one locatedShops
