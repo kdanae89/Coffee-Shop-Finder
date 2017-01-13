@@ -11,15 +11,26 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
   var controller = this;
   //function to get coffee shops
   this.getLikes = function(id) {
-    console.log(id);
     $http({
       method:'POST',
       url:'/',
       data: this.id
     }).then(
       function(response) {//success
-        controller.likes = response.data;
-        console.log(controller.likes);
+        controller.data = response.data;
+        var entries = [];
+        controller.data.forEach(function(entry) {
+          $http({
+            method:'GET',
+            url:'/:_'+entry._id,
+            data: entry.likes
+          })
+          entries.push(entry);
+          console.log(entry.likes);
+          console.log(entry._id);
+        });
+        controller.entry = entries;
+        console.log(controller.entry);
       }
     );
   }
@@ -89,7 +100,6 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
         });
         controller.places = shops;
         console.log(controller.places);
-      // return controller.places;
       }
     }
   }
