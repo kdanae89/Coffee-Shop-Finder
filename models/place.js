@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 var placeSchema = mongoose.Schema({
-	//changed from name because there are repeats of names, need unique id
+	vicinity: {type: String, unique: true},
 	likes: { type: Number, default: 0 }
 })
 

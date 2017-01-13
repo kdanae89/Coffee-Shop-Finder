@@ -7,35 +7,8 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
   //global this
   var controller = this;
   //function to get coffee shops
-  this.getLikes = function(id) {
-    console.log(id);
-    $http({
-      method:'POST',
-      url:'/',
-      data: this.id
-    }).then(
-      function(response) {//success
-        controller.data = response.data;
-        controller.data.forEach(function(entry) {
-          $http({
-            method:'GET',
-            url:'/:_'+entry._id,
-            data: entry.likes
-          })
-          var entries = [];
-          entries.push(entry);
-          //got likes to increase by 1
-          entry.likes++;
-          console.log(entry.likes);
-          console.log(entry._id);
-        });
-        controller.entry = entries;
-        console.log(controller.entry);
-      }
-    );
-  }
   this.getShops = function(){
-    //grab many shops by zip
+    //grab coffee shops by zip
     $http({
       method: 'GET',
       url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM',
@@ -48,6 +21,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
 
         var map;
         var service;
+        var geocode;
 
         function initialize() {
           var locatedAt = new google.maps.LatLng(lat,lng);
@@ -65,32 +39,41 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
           };
 
           service = new google.maps.places.PlacesService(map);
-          // service.nearbySearch(request, callback);
+          service.nearbySearch(request, callback);
           service.nearbySearch(request, function(results) {
             $scope.$apply(function() {
-              console.log(results);
-              controller.places = results;
+              results.forEach(function(result) {
+                function setMarker(result) {
+                  geocoder = new google.maps.Geocoder();
+                  var address = result.vicinity;
+                  geocoder.geocode( { 'address': address}, function(geoResults, status) {
+                    if (status == 'OK') {
+                      console.log(geoResults);
+                      // var marker = new google.maps.Marker({
+                      //   position: results[0].geometry.location,
+                      //   zoom: 20
+                      // });
+                    } else {
+                      alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                  });
+                }
+              // var infowindow = new google.maps.InfoWindow({
+              //   content: {
+              //     Name: controller.places.name,
+              //     Rating: controller.places.rating,
+              //     Address: controller.places.vicinity,
+              //   }
+              // });
+              // marker.addListener('click', function() {
+              //   infowindow.open(map, marker);
+              // });
             })
           });
-
-
-          var infowindow = new google.maps.InfoWindow({
-            content: "hi kaylie"
-          });
-
-          var marker = new google.maps.Marker({
-            position: locatedAt,
-            map: map,
-            title: 'Details'
-          });
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
+        })
       }
       initialize();
   })
-
-
 
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
