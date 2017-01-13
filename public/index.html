@@ -20,21 +20,22 @@
     <form ng-submit="shops.getShops()">
       <label>Where are you searching?</label>
       <input ng-model="shops.searchQuery" type="text" placeholder="zipcode">
-      <input type="submit" value="">
+      <input type="submit">
     </form>
     <div id="map"></div>
     <ul id="results">
-      <li ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}} <form>
-        <input ng-click="shops.getLikes(shop.id)" type="submit" value="Like" ng-model="shop.id">
-      </form></li>
-
+      <li  ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}}
+        <form>
+          <input ng-model="shop.id" ng-click="shops.getLikes(shop.id)" type="submit" value="Like">
+        </form>
+      </li>
     </ul>
     <aside id="trending">
       <h1>trending</h1>
       <ul>
-        <li>Now</li>
-        <li>Of All Time</li>
+        <li ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}}</li>
       </ul>
+
     </aside>
   </body>
 </html>
