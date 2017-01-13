@@ -1,9 +1,6 @@
+
 //DECLARE ANGULAR
 var app = angular.module('coffeeShopFinder', ['ngRoute']);
-
-app.config(function() {
-
-})
 
 //create our controller, calling this one locatedShops
 app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
@@ -11,6 +8,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
   var controller = this;
   //function to get coffee shops
   this.getLikes = function(id) {
+    console.log(id);
     $http({
       method:'POST',
       url:'/',
@@ -18,14 +16,16 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
     }).then(
       function(response) {//success
         controller.data = response.data;
-        var entries = [];
         controller.data.forEach(function(entry) {
           $http({
             method:'GET',
             url:'/:_'+entry._id,
             data: entry.likes
           })
+          var entries = [];
           entries.push(entry);
+          //got likes to increase by 1
+          entry.likes++;
           console.log(entry.likes);
           console.log(entry._id);
         });
