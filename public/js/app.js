@@ -20,7 +20,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
 
         var map;
         var service;
-        var geocode;
+        var geocoder = new google.maps.Geocoder;
 
         function initialize() {
           var locatedAt = new google.maps.LatLng(lat,lng);
@@ -37,53 +37,55 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
             rankBy: google.maps.places.RankBy.DISTANCE
           };
 
-          service = new google.maps.places.PlacesService(map);
-          service.nearbySearch(request, callback);
-          service.nearbySearch(request, function(results) {
-            $scope.$apply(function() {
-              results.forEach(function(result) {
-                function setMarker(result) {
-                  geocoder = new google.maps.Geocoder();
-                  var address = result.vicinity;
-                  geocoder.geocode( { 'address': address}, function(geoResults, status) {
-                    if (status == 'OK') {
-                      console.log(geoResults);
-                      // var marker = new google.maps.Marker({
-                      //   position: results[0].geometry.location,
-                      //   zoom: 20
-                      // });
-                    } else {
-                      alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                  });
-                }
-              // var infowindow = new google.maps.InfoWindow({
-              //   content: {
-              //     Name: controller.places.name,
-              //     Rating: controller.places.rating,
-              //     Address: controller.places.vicinity,
-              //   }
-              // });
-              // marker.addListener('click', function() {
-              //   infowindow.open(map, marker);
-              // });
-            })
-          });
-        })
-      }
-      initialize();
-  })
 
-    function callback(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        var shops = [];
-        results.forEach(function(shop) {
-          shops.push(shop);
-        });
-        controller.places = shops;
-        console.log(controller.places);
+          service = new google.maps.places.PlacesService(map);
+          $scope.$apply(function() {
+            service.nearbySearch(request, getPlaces);
+            service.nearbySearch(request, getMarkers);
+          })
+        }
+        initialize();
+      })
+      function getPlaces(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          var shops = [];
+          results.forEach(function(shop) {
+            shops.push(shop);
+          });
+          controller.places = shops;
+          console.log(controller.places);
+        }
       }
-    }
+
+      function getLatLng() {
+        var LatLng;
+        geocoder.geocode( { 'LatLng' : LatLng }, function(results) {
+          LatLng = results.geometry.location
+        });
+        return LatLng;
+      }
+
+      var newMarker = new google.maps.Marker({
+        position: LatLng
+      });
+
+      function getMarkers(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          results.forEach(function(result) {
+            getLatLng();
+            var infowindow = new google.maps.InfoWindow({
+              content: {
+                Name: result.name,
+                Rating: result.rating,
+                Address: result.vicinity,
+              }
+            });
+            newMarker.addListener('click', function() {
+              infowindow.open(map, newMarker);
+            });
+          })
+        }
+      }
   }
 
 }]);
