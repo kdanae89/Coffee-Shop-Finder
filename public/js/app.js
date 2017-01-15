@@ -10,7 +10,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
     //grab coffee shops by zip
     $http({
       method: 'GET',
-      url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=AIzaSyAZh1fM4eOg-ovT68WXnfIDgSYu4FU5HYM',
+      url:'https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:'+this.searchQuery+'&key=process.env.API_KEY',
     })
     .then(function(response) {
         var lat = response.data.results[0].geometry.location.lat;

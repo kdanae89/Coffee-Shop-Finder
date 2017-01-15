@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/kdanae89/Coffee-Shop-Finder#readme",
   "dependencies": {
-    "@google/maps": "^0.3.1",
     "angular-route": "^1.6.1",
     "body-parser": "^1.15.2",
     "dotenv": "^4.0.0",
