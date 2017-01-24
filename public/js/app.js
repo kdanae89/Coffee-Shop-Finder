@@ -18,11 +18,12 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
       var lng = response.data.results[0].geometry.location.lng;
       console.log(lat, lng);
 
+      var map;
+
       function initialize() {
         var locatedAt = new google.maps.LatLng(lat,lng);
         console.log(locatedAt);
 
-        var map;
         map = new google.maps.Map(document.getElementById('map'), {
           center: locatedAt,
           zoom: 15
@@ -35,8 +36,7 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
         };
 
         // initalize service API variable
-        var service;
-        service = new google.maps.places.PlacesService(map);
+        var service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, getPlaces);
       }
 
@@ -45,6 +45,23 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
           var shops = [];
           results.forEach(function(shop) {
             shops.push(shop);
+            var lat = shop.geometry.location.lat();
+            var lng = shop.geometry.location.lng();
+            LatLng = new google.maps.LatLng(lat,lng);
+
+            var infowindow = new google.maps.InfoWindow({
+              content: "hi kaylie"
+            });
+
+            var marker = new google.maps.Marker({
+              position: LatLng,
+              map: map,
+              title: 'Details'
+            });
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+
             $scope.$apply(function() {
               console.log(shop);
               controller.places = shops;
@@ -69,22 +86,11 @@ function initMap() {
 }
 
 
-// var lat = shop.geometry.location.lat();
-// var lng = shop.geometry.location.lng();
-// console.log(lat, lng);
-// var LatLng = new google.maps.LatLng(lat,lng);
-// var marker = new google.maps.Marker({
-//   position: LatLng
-// });
+
+//
 //
 // var contentString = '<ul id="results">' +
 //   '<li>  {{shop.name}} @ {{shop.vicinity}}</li>' +
 // '</ul>';
 //
-// var infowindow = new google.maps.InfoWindow({
-//   content: contentString
-// });
 //
-// marker.addListener('click', function() {
-//   infowindow.open(map, marker);
-// });
