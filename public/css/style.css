@@ -1,13 +1,14 @@
 body {
   height: 100vh;
   width: 100%;
-  background-image: url('http://img03.deviantart.net/ef72/i/2013/142/e/d/texture_328_by_sirius_sdz-d6665gz.jpg');
+  background-image: url('https://parrceramics.com/wp-content/uploads/2016/02/slatebackground1280px90dpiwebop.jpg');
   cursor: all-scroll;
 }
 
 * {
   font-family: 'Gloria Hallelujah', cursive;
   box-sizing: border-box;
+  color: ivory;
 }
 
 /*header h1 {
@@ -31,7 +32,7 @@ form {
 #map {
   height: 400px;
   width: 400px;
-  box-shadow: 8px 8px 10px #992600;
+  box-shadow: 8px 8px 8px #8C8684;
   margin-top: 2%;
   float: left;
  }
@@ -49,7 +50,7 @@ input[type="text"] {
 
 input[type="submit"] {
   border-radius: 100%;
-  background: linear-gradient(chocolate,firebrick);
+  background: linear-gradient(#201E1D,grey);
   font-size: 1.3rem;
   color:white;
 }
@@ -91,12 +92,12 @@ header {
   margin-left: 1em;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
-  box-shadow: 8px 5px 5px #992600;
-  min-width: 367px;
+  box-shadow: 8px 5px 5px #8C8684;
+  min-width: 320px;
 }
 .ccup {
   float: left;
-  height: 15vh;
-  width: 8em;
-  margin-left: 11em;
+  height: 20vh;
+  width: 10em;
+  margin-left: 5em;
 }
