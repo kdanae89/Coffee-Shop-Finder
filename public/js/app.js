@@ -45,33 +45,15 @@ app.controller('locatedShops', ['$http', '$scope', function($http, $scope){
           var shops = [];
           results.forEach(function(shop) {
             shops.push(shop);
-            var lat = shop.geometry.location.lat();
-            var lng = shop.geometry.location.lng();
-            console.log(lat, lng);
-            var LatLng = new google.maps.LatLng(lat,lng);
-            var marker = new google.maps.Marker({
-              position: LatLng
-            });
-
-            var contentString = '<ul id="results">' +
-              '<li>  {{shop.name}} @ {{shop.vicinity}}</li>' +
-            '</ul>';
-
-            var infowindow = new google.maps.InfoWindow({
-              content: contentString
-            });
-
-            marker.addListener('click', function() {
-              infowindow.open(map, marker);
-            });
-
-            console.log(shop);
+            $scope.$apply(function() {
+              console.log(shop);
+              controller.places = shops;
+            })
           });
-          controller.places = shops;
           console.log(controller.places);
         }
       }
-      $scope.$apply(initialize());
+      initialize()
     })
   }
 }]);
@@ -85,3 +67,24 @@ function initMap() {
     center: location
   });
 }
+
+
+// var lat = shop.geometry.location.lat();
+// var lng = shop.geometry.location.lng();
+// console.log(lat, lng);
+// var LatLng = new google.maps.LatLng(lat,lng);
+// var marker = new google.maps.Marker({
+//   position: LatLng
+// });
+//
+// var contentString = '<ul id="results">' +
+//   '<li>  {{shop.name}} @ {{shop.vicinity}}</li>' +
+// '</ul>';
+//
+// var infowindow = new google.maps.InfoWindow({
+//   content: contentString
+// });
+//
+// marker.addListener('click', function() {
+//   infowindow.open(map, marker);
+// });
