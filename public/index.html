@@ -27,7 +27,10 @@
     </form>
     <div id="map"></div>
     <ul id="results">
-      <li ng-repeat="shop in shops.places track by $index">{{shop.name}} @ {{shop.vicinity}}<p ng-if="shop.opening_hours.open_now==true">Open Now!</p></li>
+      <li ng-repeat="shop in shops.places track by $index"><h2>{{shop.name}}</h2><h4> @ {{shop.vicinity}}</h4><p ng-if="shop.opening_hours.open_now==true">Open Now!</p></li>
     </ul>
+    <footer>
+      <h4>Coffee Shop Finder was created by Shannon Matloob and Kaylie Weable while attending GA</h4>
+    </footer>
   </body>
 </html>

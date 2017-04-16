@@ -30,10 +30,11 @@ form {
 }
 
 #map {
-  height: 400px;
-  width: 400px;
+  height: 60%;
+  width: 45%;
   box-shadow: 8px 8px 8px #8C8684;
   margin-top: 2%;
+  margin-left: 2%;
   float: left;
  }
 
@@ -59,14 +60,20 @@ header {
 }
 
 #results {
+  width: 45%;
+  height: 60%;
+  overflow: scroll;
   list-style: none;
   text-align: center;
-  width: 40%;
   float: left;
   margin: 0;
   padding-left: 0;
-  margin-left: 2.5%;
+  margin-left: 3%;
   margin-top: 2%;
+}
+
+#results::-webkit-scrollbar { 
+    display: none;
 }
 
 #results li {
@@ -75,8 +82,6 @@ header {
 }
 
 #results li, #trending li {
-  border: 4px outset silver;
-  background: linear-gradient(silver,snow);
   font-size: 1.5rem;
 }
 
@@ -100,4 +105,11 @@ header {
   height: 20vh;
   width: 10em;
   margin-left: 5em;
+}
+
+footer {
+  clear: both;
+  margin: auto;
+  padding-top: 2em;
+  text-align: center;
 }
