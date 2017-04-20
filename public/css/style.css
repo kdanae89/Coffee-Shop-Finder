@@ -72,7 +72,7 @@ header {
   margin-top: 2%;
 }
 
-#results::-webkit-scrollbar { 
+#results::-webkit-scrollbar {
     display: none;
 }
 
@@ -113,3 +113,15 @@ footer {
   padding-top: 2em;
   text-align: center;
 }
+
+@media (max-width: 575px) {
+  #map {
+    width: 90%;
+  }
+  #results {
+    clear: both;
+    width: 90%;
+    margin-top: 5em;
+    height: 40em;
+    }
+  }
