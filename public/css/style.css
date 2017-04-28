@@ -116,10 +116,10 @@ footer {
 }
 
 @media (max-width: 575px) {
-  body {
+  /*body {
     background-image: none;
     background-color: #000000;
-  }
+  }*/
   #map {
     width: 90%;
   }
