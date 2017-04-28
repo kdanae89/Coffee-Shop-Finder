@@ -116,10 +116,9 @@ footer {
 }
 
 @media (max-width: 575px) {
-  /*body {
-    background-image: none;
-    background-color: #000000;
-  }*/
+  body {
+    background-image: url('https://parrceramics.com/wp-content/uploads/2016/02/slatebackground1280px90dpiwebop.jpg') no-repeat center center fixed;
+  }
   #map {
     width: 90%;
   }
