@@ -118,7 +118,7 @@ footer {
 @media (max-width: 575px) {
   body {
     background-image: none;
-    background-color: black;
+    background-color: #000000;
   }
   #map {
     width: 90%;
